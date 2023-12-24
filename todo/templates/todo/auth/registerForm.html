@@ -1,0 +1,59 @@
+{% extends 'todo/main.html' %}
+{% load myfilters %}
+{% block title %} {% endblock %}
+
+{% block css %}
+
+<style>
+    .form-wrapper{
+        width: 500px;
+        padding: 2rem;
+        border: 1px solid rgb(196, 196, 196);
+        border-radius: 5px;
+        margin-top: 5rem;
+    }
+
+    .signup{
+        font-weight: 600;
+        color: rgb(61, 61, 61);
+        margin-bottom: 2rem;
+    }
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="main-area">
+    <div class="form-wrapper mx-auto">
+
+        <form method="POST" action="">
+            <h2 class="signup">Sign Up</h2>
+            {% for field in form %}
+            <div class="mb-4">
+    
+                
+                {{field.label_tag}} 
+                <br>
+                {{field|addclass:'form-control'}}
+                
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <div id="emailHelp" class="form-text" style="color: red;">
+                    {{error}}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+            {% endfor %}
+            <input class="btn btn-danger" type="submit" value="Register">
+        </form>
+
+        <div class="haveaccount mt-4" style="text-align: center;">
+            <p>Already have account ? <span><a href="{% url 'login' %}">Login</a></span></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
