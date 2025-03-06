@@ -31,7 +31,7 @@ def register(request):
 
         messages.success(request,"Successfully Registered, Please login with Registered credantials")
 
-        return HttpResponse("done")
+        return redirect(reverse('login'))
 
     #     return JsonResponse({
     #         "status" : "error",
